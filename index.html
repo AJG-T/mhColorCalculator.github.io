@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Dropdowns</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 50px;
+    }
+    .dropdown-container {
+      display: flex;
+      gap: 20px;
+    }
+    select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h2>Kleurkansen berekenaar:</h2>
+  <div class="dropdown-container">
+    <select id="dropdown1"></select>
+    <select id="dropdown2"></select>
+    <button type="button">Bereken</button>
+  </div>
+
+  <script>
+    // Your data
+const colors = [
+  "Geen voorkeur",
+  "Amber champagne",
+  "Amber champagne dun",
+  "Amber cream champagne",
+  "Amber cream champagne dun",
+  "Appelschimmel",
+  "Bruin dun pangare / Brunblakk pangare",
+  "Bruin dun / Brunblakk",
+  "Bruin dun mushroom",
+  "Bruin mushroom",
+  "Classic champagne",
+  "Classic champagne dun",
+  "Classic cream champagne",
+  "Classic cream champagne dun",
+  "Cremello",
+  "Cremello dun / Kvit",
+  "Donkerbruin",
+  "Donkere koolvos",
+  "Donkere zweetvos",
+  "Donkere zweetvos pangare",
+  "Dubbel cream champagne",
+  "Dubbel cream champagne dun",
+  "Flaxen koffievos",
+  "Flaxen vos dun",
+  "Gold champagne",
+  "Gold champagne dun",
+  "Gold cream champagne",
+  "Gold cream champagne dun",
+  "Koffievos",
+  "Koolzwart",
+  "Lichtbruin",
+  "Lichte koolvos",
+  "Lichte zweetvos",
+  "Lichte zweetvos pangare",
+  "Normale koolvos",
+  "Gewone zweetvos",
+  "Gewone zweetvos pangare",
+  "Palomino",
+  "Palomino dun / Gulblakk",
+  "Palomino dun pangare / Gulblakk pangare",
+  "Palomino dun mushroom",
+  "Palomino mushroom",
+  "Pearl",
+  "Perlino",
+  "Perlino dun / Kvit",
+  "Rose appelschimmel",
+  "Rose gray",
+  "Sable champagne",
+  "Sable champagne dun",
+  "Sable cream champagne",
+  "Sable cream champagne dun",
+  "Schimmel",
+  "Seal brown",
+  "Smokey black",
+  "Smokey black dun / Grå",
+  "Smokey cream",
+  "Smokey cream dun / Kvit",
+  "Valk",
+  "Valk dun / Ulsblakk",
+  "Valk dun pangare / Ulsblakk pangare",
+  "Valk dun mushroom",
+  "Valk mushroom",
+  "Vliegenschimmel",
+  "Vos",
+  "Vos dun / Rodblakk",
+  "Vos dun pangare / Rodblakk pangare",
+  "Vos dun mushroom",
+  "Vos mushroom",
+  "Zilver bruin dun mushroom",
+  "Zilver bruin mushroom",
+  "Zilver valk dun mushroom",
+  "Zilver valk mushroom",
+  "Zilverappel amber champagne",
+  "Zilverappel amber champagne dun",
+  "Zilverappel amber cream champagne",
+  "Zilverappel amber cream champagne dun",
+  "Zilverappel bruin",
+  "Zilverappel bruin dun",
+  "Zilverappel classic champagne",
+  "Zilverappel classic champagne dun",
+  "Zilverappel classic cream champagne",
+  "Zilverappel classic cream champagne dun",
+  "Zilverappel dubbel cream champagne",
+  "Zilverappel dubbel cream champagne dun",
+  "Zilverappel perlino",
+  "Zilverappel perlino dun",
+  "Zilverappel sable champagne",
+  "Zilverappel sable champagne dun",
+  "Zilverappel sable cream champagne",
+  "Zilverappel sable cream champagne dun",
+  "Zilverappel smokey black",
+  "Zilverappel smokey black dun",
+  "Zilverappel smokey cream",
+  "Zilverappel smokey cream dun",
+  "Zilverappel valk",
+  "Zweetvos",
+  "Zilverappel valk dun",
+  "Zilverappel zwart",
+  "Zilverappel zwart dun",
+  "Zwart",
+  "Zwart dun / Grå"
+];
+
+
+    // Helper function to populate dropdowns
+    function populateDropdown(dropdownId, items) {
+      const dropdown = document.getElementById(dropdownId);
+      dropdown.innerHTML = ""; // clear it first
+
+      const defaultOption = document.createElement("option");
+      defaultOption.text = "Select an option";
+      defaultOption.value = "";
+      dropdown.add(defaultOption);
+
+      items.forEach(item => {
+        const option = document.createElement("option");
+        option.value = item.toLowerCase();
+        option.text = item;
+        dropdown.add(option);
+      });
+    }
+
+    // Populate both dropdowns
+    populateDropdown("dropdown1", colors);
+    populateDropdown("dropdown2", colors);
+  </script>
+</body>
+</html>
